@@ -53,13 +53,13 @@ void append_scr(scr_t scr, line_t line) {
     }
 
     if (line.p1.y < 0 || line.p1.y > SCR_H) {
-        printf("error: invalid arg '%d'; out of x range (0 - %d)\n",
+        printf("error: invalid arg '%d'; out of y range (0 - %d)\n",
             line.p2.x, SCR_H);
         exit(1);
     }
 
     if (line.p2.y < 0 || line.p2.y > SCR_H) {
-        printf("error: invalid arg '%d'; out of x range (0 - %d)\n",
+        printf("error: invalid arg '%d'; out of y range (0 - %d)\n",
             line.p2.x, SCR_H);
         exit(1);
     }
