@@ -69,8 +69,10 @@ char* get_line(FILE* fptr, line_t* lptr) {
             raise_error("invalid value(s)", 1);
         }
 
-        *(int* [4]){ &lptr->p1.x, &lptr->p1.y,
-            &lptr->p2.x, &lptr->p2.y }[i - 1] = n;
+        *(int*[4]) {
+            &lptr->p1.x, &lptr->p1.y,
+                &lptr->p2.x, &lptr->p2.y
+        }[i - 1] = n;
     }
 
     if (i < 5) {
@@ -81,6 +83,10 @@ char* get_line(FILE* fptr, line_t* lptr) {
 }
 
 int main(int argc, char** argv) {
+    if (!argv[1]) {
+        printf("Usage:\n    linegen <path-to-file>\n");
+    }
+
     FILE* fptr = fopen(argv[1], "r");
     if (!fptr) {
         raise_error("file not found", 1);
