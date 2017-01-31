@@ -92,6 +92,11 @@ char* get_line(FILE* fptr, line_t* lptr) {
             exit(1);
         }
 
+        if (i > 4) {
+            printf("error: invalid line '%s'; excess arg(s)\n", line);
+            exit(1);
+        }
+
         int n = atoi(tok);
         if (n == 0 && tok[0] != '0') {
             printf("error: invalid arg '%s'; expected type 'int'\n", tok);
