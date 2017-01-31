@@ -111,8 +111,6 @@ char* get_line(FILE* fptr, line_t* lptr) {
 }
 
 int main(int argc, char** argv) {
-    argv[1] = "lines.txt";
-
     if (!argv[1] || strcmp(argv[1], "help") == 0) {
         printf("usage:\n    linegen <path-to-file>\n\n");
         exit(1);
