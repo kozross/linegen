@@ -44,7 +44,7 @@ void append_scr(scr_t scr, line_t line) {
     }
 }
 
-inline void raise_error(char* msg, int status) {
+void raise_error(char* msg, int status) {
     printf("error: %s\n", msg);
     exit(status);
 }
