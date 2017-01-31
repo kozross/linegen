@@ -85,8 +85,12 @@ char* get_line(FILE* fptr, line_t* lptr) {
     char* tok;
 
     int i;
-    for (i = 0; tok = strtok_r(bptr, " \n", &bptr); i++) {
-        if (i == 0) continue;
+    for (i = 0; tok = strtok_r(bptr, " ", &bptr); i++) {
+        if (i == 0) {
+            if(strcmp(tok, "line") == 0) continue;
+            printf("error: invalid identifier '%s'; did you mean 'line'?\n", tok);
+            exit(1);
+        }
 
         int n = atoi(tok);
         if (n == 0 && tok[0] != '0') {
@@ -107,6 +111,8 @@ char* get_line(FILE* fptr, line_t* lptr) {
 }
 
 int main(int argc, char** argv) {
+    argv[1] = "lines.txt";
+
     if (!argv[1] || strcmp(argv[1], "help") == 0) {
         printf("usage:\n    linegen <path-to-file>\n\n");
         exit(1);
