@@ -6,7 +6,7 @@
 #define strtok_r strtok_s
 #endif
 
-#define SCR_W 80
+#define SCR_W 75
 #define SCR_H 25
 
 #define B_SIZE 32
@@ -35,7 +35,7 @@ void init_scr(scr_t scr) {
 
 void print_scr(scr_t scr) {
     for (size_t i = 0; i < SCR_H; i++) {
-        printf("%s", scr[i]);
+        printf("%s\n", scr[i]);
     }
 }
 
