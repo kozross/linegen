@@ -1,23 +1,29 @@
 CC=gcc
-CFLAGS=-c -Wextra -Wall -Wextra
+OTHER_CFLAGS =-c -std=gnu11 -I./bstrlib -Wall -Wextra
+MY_CFLAGS=$(OTHER_CFLAGS) -Werror -Wfatal-errors
 
-linegen: main.o bsafe.o bstrlib.o buniutil.o utf8util.o
-	$(CC) main.o bsafe.o bstrlib.o buniutil.o utf8util.o -o linegen
+OBJECTS=main.o line.o scr.o bstrlib.o buniutil.o utf8util.o
+
+linegen: $(OBJECTS)
+	$(CC) -Wall -Wextra -o linegen $(OBJECTS)
 	
 main.o: main.c
-	$(CC) $(CFLAGS) main.c
-	
-bsafe.o: bstrlib/bsafe.c
-	$(CC) $(CFLAGS) bstrlib/bsafe.c
+	$(CC) $(MY_CFLAGS) main.c
+
+line.o: line.c
+	$(CC) $(MY_CFLAGS) line.c
+
+scr.o: scr.c
+	$(CC) $(MY_CFLAGS) scr.c
 	
 bstrlib.o: bstrlib/bstrlib.c
-	$(CC) $(CFLAGS) bstrlib/bstrlib.c
+	$(CC) $(OTHER_CFLAGS) bstrlib/bstrlib.c
 	
 buniutil.o: bstrlib/buniutil.c
-	$(CC) $(CFLAGS) bstrlib/buniutil.c
+	$(CC) $(OTHER_CFLAGS) bstrlib/buniutil.c
 	
 utf8util.o: bstrlib/utf8util.c
-	$(CC) $(CFLAGS) bstrlib/utf8util.c
+	$(CC) $(OTHER_CFLAGS) bstrlib/utf8util.c
 	
 clean:
-	rm *o linegen
+	rm linegen $(OBJECTS)
