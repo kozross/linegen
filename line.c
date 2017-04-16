@@ -3,7 +3,7 @@
 void error(char* type, char *msg, char *src, size_t n) {
 	if (msg) {
 		if (n) {
-			printf("%s:%d: %s-error: %s", src, n, type, msg);
+			printf("%s:%u: %s-error: %s", src, n, type, msg);
 			exit(1);
 		}
 
